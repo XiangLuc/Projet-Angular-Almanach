@@ -81,7 +81,7 @@ export const listeCreature : Creature[] = [
 
     {
         id: 9,
-        nom : "corrompu",
+        nom : "Corrompu",
         pv : 5,
         force : 15,
         defense : 5,

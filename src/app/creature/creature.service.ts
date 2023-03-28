@@ -21,6 +21,8 @@ export class CreatureService {
     return ['Slime'
     ,'Demon'
     ,'Divin'
+    ,'Mort vivant'
+    ,'Main'
   ];
   }
 
