@@ -6,6 +6,7 @@ import { AccueilSiteComponent } from './accueil-site/accueil-site.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreatureModule } from './creature/creature.module';
+import { EquipementModule } from './equipement/equipement.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     FormsModule,
     CreatureModule,
+    EquipementModule,
     AppRoutingModule
   ],
   providers: [],
