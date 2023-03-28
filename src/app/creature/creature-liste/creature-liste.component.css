@@ -1,0 +1,19 @@
+.background-page {
+  background-image: url('/assets/images/Background.jpg');
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+
+.card {
+    background-image: url('/assets/images/fondCard.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
