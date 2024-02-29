@@ -1,0 +1,57 @@
+<div *ngIf="creature" class="bg-dark vh-100">
+    <div class="bg-dark card mt-2">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border border-5">
+                    <div class="card-header bg-dark text-white" >
+                        <h4 class="text-center">
+                            {{ creature.nom | uppercase }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <img [src]="creature.image" class="mx-auto d-block img-fluid mb-3 border border-dark border-3 rounded-circle">
+                        <table class="table table-striped">
+                            <tbody>
+
+                              <tr>
+                                <th scope="row" class="h4">PV : {{ creature.pv }}</th>
+                              </tr>
+
+                              <tr>
+                                <th scope="row" class="h4">Force : {{ creature.force }}</th>
+                              </tr>
+
+                              <tr>
+                                <th scope="row" class="h4">Défense : {{ creature.defense }}</th>
+                              </tr>                     
+                              
+                            </tbody>
+                            
+                        </table>
+
+                        <h4> Race(s) : </h4>
+                        <span *ngFor="let race of creature.race" [style.background-color]="race | creatureTypePipe" class="rounded-pill px-2 py-1 text-white mr-2" style="margin: 0 5px;">
+                            {{ race | uppercase }}
+                        </span>
+
+                        <p></p> <!-- Saut de ligne -->
+
+                        <h4> Description : </h4>
+                        <textarea class="form-control border border-5" rows="4" readonly>
+                            {{ creature.description }}
+                        </textarea>
+                        <div class="text-center">
+                            <button type="button" (click)="goToCreatureListe()" class="btn btn-primary d-inline mx-2">Retour</button>
+                            <button type="button" (click)="goToEditCreature(creature)" class="btn btn-secondary d-inline">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!creature">
+    <h1 class="text-center"> L'id de la créature n'existe pas . . .</h1>
+</div>
+

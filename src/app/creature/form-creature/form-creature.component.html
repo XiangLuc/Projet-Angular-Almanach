@@ -1,0 +1,100 @@
+<form *ngIf="creature" (ngSubmit)="onSubmit()" #creatureForm="ngForm">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="nom" 
+                           required 
+                           [(ngModel)]="creature.nom" name="nom"
+                           #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Le nom de la créature est requis.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pv">Point de vie</label>
+                    <input type="number" class="form-control" id="pv" 
+                           required 
+                           pattern="^([1-9]|[1-9][0-9]{1,2})$"
+                           [(ngModel)]="creature.pv" name="pv"
+                           #pv="ngModel">
+                    <div [hidden]="pv.valid || pv.pristine" class="alert alert-danger">
+                        Les points de vie de la créature sont compris entre 1 et 999.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="force">Force</label>
+                    <input type="number" class="form-control" id="force" 
+                           required 
+                           pattern="^([1-9]|[1-9][0-9]{1,2})$"
+                           [(ngModel)]="creature.force" name="force"
+                           #force="ngModel">
+                    <div [hidden]="force.valid || force.pristine" class="alert alert-danger">
+                        Les dégâts de la créature sont compris entre 1 et 999.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="defense">Force</label>
+                    <input type="number" class="form-control" id="defense" 
+                           required 
+                           pattern="^([1-9]|[1-9][0-9]{1,2})$"
+                           [(ngModel)]="creature.defense" name="defense"
+                           #defense="ngModel">
+                    <div [hidden]="defense.valid || defense.pristine" class="alert alert-danger">
+                        La défense de la créature est compris entre 1 et 999.
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" [(ngModel)]="creature.description" name="description" 
+                            required 
+                            [(ngModel)]="creature.description" name="description"
+                            #description="ngModel">
+                    </textarea>
+                    <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+                        La description de la créature doit etre valide.
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="types">Races</label>
+                    <div *ngFor="let race of race">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox"
+                                   class="form-check-input"
+                                   id="{{ race }}"
+                                   [value]="race"
+                                   [checked]="verifRace(race)"
+                                   [disabled]="!isRaceValid(race)"
+                                   (change)="selectRace($event, race)"/>
+                            <label class="form-check-label" for="{{ race }}">
+                                <div class="{{ race | creatureTypePipe }}">
+                                    {{ race }}
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="!creatureForm.form.valid">
+                        Valider
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<h3 *ngIf="!creature" class="text-center">
+    La créature n'existe pas . . .
+</h3>

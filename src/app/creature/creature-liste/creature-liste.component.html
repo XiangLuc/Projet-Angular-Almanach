@@ -1,0 +1,24 @@
+ <div class="background-page">
+
+    <h1 class="text-center bg-dark text-white">
+        Liste des créatures :
+    </h1>
+            
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let creature of listeCreature" class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card border-dark" style="width: 18rem;">
+                    <div (click)="goToDetailsCreature(creature)" class="card-body" creatureBorderCard="#FF7F50">
+                        <h4 class="card-title text-center fw-bold">
+                            {{ creature.nom | uppercase }}
+                        </h4>
+                        <img [src]="creature.image" class="card-img-top card-img" alt="...">
+                        <span *ngFor="let race of creature.race" [style.background-color]="race | creatureTypePipe" class="rounded-pill px-2 py-1 text-white mr-2" style="margin: 0 5px;">
+                            {{ race | uppercase }}
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
